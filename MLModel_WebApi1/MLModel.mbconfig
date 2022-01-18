@@ -1,0 +1,127 @@
+﻿{
+  "TrainingTime": 10,
+  "Scenario": "Regression",
+  "DataSource": {
+    "Type": "TabularFile",
+    "Version": 1,
+    "FilePath": "C:\\Users\\bk4lk\\Downloads\\E2021new.csv",
+    "Delimiter": ";",
+    "DecimalMarker": ".",
+    "HasHeader": true,
+    "ColumnProperties": [
+      {
+        "ColumnName": "HomeTeam",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 1
+      },
+      {
+        "ColumnName": "AwayTeam",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 1
+      },
+      {
+        "ColumnName": "FTHomeGol",
+        "ColumnPurpose": "Label",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 1
+      },
+      {
+        "ColumnName": "FTAwayGol",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 1
+      },
+      {
+        "ColumnName": "HomeShot",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 1
+      },
+      {
+        "ColumnName": "AwayShot",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 1
+      },
+      {
+        "ColumnName": "HomeCorner",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 1
+      },
+      {
+        "ColumnName": "AwayCorner",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 1
+      }
+    ]
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 0,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "FastForestRegression",
+        "Score": 0.021126558051714796,
+        "RuntimeInSeconds": 3.6679999828338623
+      },
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "FastTreeTweedieRegression",
+        "Score": -0.012244734001349567,
+        "RuntimeInSeconds": 1.3839999437332153
+      },
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "LightGbmRegression",
+        "Score": -0.055104625849966796,
+        "RuntimeInSeconds": 1.2400000095367432
+      },
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "SdcaRegression",
+        "Score": -0.00781292049993173,
+        "RuntimeInSeconds": 1.8919999599456787
+      },
+      {
+        "Version": 0,
+        "Type": "Trial",
+        "TrainerName": "FastTreeRegression",
+        "Score": -0.44470972543257331,
+        "RuntimeInSeconds": 1.3320000171661377
+      }
+    ],
+    "Pipeline": "{\"parameter\":{\r\n  \"0\": {\r\n    \"OutputColumnNames\": [\r\n      \"FTAwayGol\",\r\n      \"HomeShot\",\r\n      \"AwayShot\",\r\n      \"HomeCorner\",\r\n      \"AwayCorner\"\r\n    ],\r\n    \"InputColumnNames\": [\r\n      \"FTAwayGol\",\r\n      \"HomeShot\",\r\n      \"AwayShot\",\r\n      \"HomeCorner\",\r\n      \"AwayCorner\"\r\n    ]\r\n  },\r\n  \"1\": {\r\n    \"InputColumnName\": \"HomeTeam\",\r\n    \"OutputColumnName\": \"HomeTeam\"\r\n  },\r\n  \"2\": {\r\n    \"InputColumnName\": \"AwayTeam\",\r\n    \"OutputColumnName\": \"AwayTeam\"\r\n  },\r\n  \"3\": {\r\n    \"InputColumnNames\": [\r\n      \"FTAwayGol\",\r\n      \"HomeShot\",\r\n      \"AwayShot\",\r\n      \"HomeCorner\",\r\n      \"AwayCorner\",\r\n      \"HomeTeam\",\r\n      \"AwayTeam\"\r\n    ],\r\n    \"OutputColumnName\": \"Features\"\r\n  },\r\n  \"4\": {\r\n    \"NumberOfTrees\": 4,\r\n    \"NumberOfLeaves\": 4,\r\n    \"FeatureFraction\": 1.0,\r\n    \"LabelColumnName\": \"FTHomeGol\",\r\n    \"FeatureColumnName\": \"Features\"\r\n  }\r\n},\"estimators\":[\"ReplaceMissingValues\",\"FeaturizeText\",\"FeaturizeText\",\"Concatenate\",\"FastForestRegression\"]}",
+    "MetricName": "RSquared"
+  },
+  "Type": "TrainingConfig",
+  "Version": 1
+}
